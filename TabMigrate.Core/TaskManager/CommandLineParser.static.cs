@@ -37,6 +37,7 @@ public partial class CommandLineParser
     public const string Parameter_ImportAssignContentOwnership  = "-remapContentOwnership"; //On site import, look for content metadata files that tell us what owner to assign the content to
     public const string Parameter_RemapDataserverReferences     = "-remapDataserverReferences"; //On site import, workbook XML should be examined and have data server references updated to point to the target server/site
     public const string Parameter_GenerateInfoFilesForDownloads = "-downloadInfoFiles"; //Downloaded Workbooks/Datasources will get companion XML files with additional metadata that can be used during uploads (e.g. show tabs in workbooks)
+    public const string ParameterValue_ProjectName = "-targetProject"; //Downloaded Workbooks/Datasources will get companion XML files with additional metadata that can be used during uploads (e.g. show tabs in workbooks)
 
     //Get an inventory of the running server
     public const string ParameterValue_Command_Inventory = "siteInventory";

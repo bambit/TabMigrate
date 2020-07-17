@@ -1101,7 +1101,8 @@ public partial class TaskMaster
                 serverLogin,
                 taskOptions.GetOptionValue(TaskMasterOptions.OptionParameter_PathUploadFrom), 
                 taskOptions.IsOptionSet(TaskMasterOptions.Option_RemapWorkbookReferencesOnUpload),
-                uploadCredentialManager,
+                uploadCredentialManager, taskOptions.GetOptionValue(TaskMasterOptions.Option_ProjectName),
+
                 taskOptions.IsOptionSet(TaskMasterOptions.Option_AssignContentOwnershipAfterPublish),
                 _downloadedList_Users);
         }
@@ -1588,6 +1589,7 @@ public partial class TaskMaster
         string localBasePath, 
         bool remapWorkbookReferences, 
         CredentialManager credentialManager,
+        string projectName,
         bool attemptContentOwnershipAssignment,
         IEnumerable<SiteUser> siteUsers)
     {
@@ -1624,6 +1626,7 @@ public partial class TaskMaster
             onlineLogin,
             credentialManager,
             pathWorkbooks, 
+            projectName,
             remapWorkbookReferences, 
             pathRemappingTempspace, 
             uploadProjectBehavior, 

@@ -53,5 +53,6 @@ public partial class TaskMasterOptions
     public const string OptionParameter_ExportOnlyTaggedWith = "ExportOnlyTaggedWith";
     public const string OptionParameter_RemoveTagFromExportedContent = "RemoveTagFromExportedContent";
     public const string OptionParameter_GenerateInfoFilesForDownloadedContent = "GenerateInfoFilesForDownloadedContent";
+    public const string Option_ProjectName = nameof(Option_ProjectName);
 
 }

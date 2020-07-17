@@ -20,6 +20,8 @@ partial class UploadWorkbooks : TableauServerSignedInRequestBase
     /// </summary>
     private readonly string _localUploadPath;
 
+    private readonly string _targetProject;
+
     /// <summary>
     /// If TRUE, Workbooks are modified to map their references to point to the server they are being uploaded to
     /// </summary>
@@ -72,6 +74,7 @@ partial class UploadWorkbooks : TableauServerSignedInRequestBase
         TableauServerSignIn login,
         CredentialManager credentialManager,
         string localUploadPath,
+        string projectName,
         bool remapWorkbookReferences,
         string localPathTempWorkspace,
         UploadBehaviorProjects uploadProjectBehavior,
@@ -88,7 +91,8 @@ partial class UploadWorkbooks : TableauServerSignedInRequestBase
         _localPathTempWorkspace = localPathTempWorkspace;
         _uploadProjectBehavior = uploadProjectBehavior;
         _manualActions = manualActions;
-        _credentialManager = credentialManager; 
+        _credentialManager = credentialManager;
+        _targetProject = projectName;
         if (_manualActions == null)
         {
             _manualActions = new CustomerManualActionManager();
@@ -164,7 +168,7 @@ partial class UploadWorkbooks : TableauServerSignedInRequestBase
         string projectName;
         if (rootContentPath == currentContentPath) //If we are in the root upload directory, then assume any content goes to the Default project
         {
-            projectName = ""; //Default project
+            projectName = _targetProject??""; //Default project
         }
         else
         {

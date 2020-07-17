@@ -86,6 +86,7 @@ public partial class TaskMaster
                 ,commandLine.GetParameterValueAsBool(CommandLineParser.Parameter_RemapDataserverReferences)
                 ,commandLine.GetParameterValue(CommandLineParser.Parameter_DBCredentialsFile)
                 ,commandLine.GetParameterValueAsBool(CommandLineParser.Parameter_ImportAssignContentOwnership)
+                , commandLine.GetParameterValue(CommandLineParser.ParameterValue_ProjectName)
                 ,taskOptions
                 );
         }
@@ -262,6 +263,7 @@ public partial class TaskMaster
         bool remapDataserverReferences,
         string pathDbCredentials,
         bool assignContentOwnership,
+        string projectName,
         TaskMasterOptions options)
     {
         //If we were passed in no existing options, then add them
@@ -297,6 +299,10 @@ public partial class TaskMaster
         if(!string.IsNullOrWhiteSpace(pathDbCredentials))
         {
             options.AddOption(TaskMasterOptions.Option_DBCredentialsPath, pathDbCredentials);
+        }
+        if(!string.IsNullOrWhiteSpace(projectName))
+        {
+            options.AddOption(TaskMasterOptions.Option_ProjectName, projectName);
         }
 
         //Generate the URLs mapping class
